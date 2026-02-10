@@ -1,0 +1,16 @@
+---
+description: Basi-Tay project context and coding standards
+alwaysApply: true
+---
+
+# Basi-Tay Project Overview
+
+- **App**: FOSS minimalist planner (to-do lists, calendar). Vue 3 + Electron, cross-platform.
+- **Stack**: Vue 3, Vuex 4, vue-i18n, Bootstrap 5, SCSS. JavaScript only (no TypeScript).
+- **Structure**: `src/components/`, `src/views/`, `src/store/modules/`, `src/repositories/`, `src/helpers/`, `src/assets/languages/`.
+
+## Conventions
+
+- **Comments and documentation**: Always in English.
+- **User-facing text**: Use i18n via `$t('key')`. Add keys to `src/assets/languages/en.json` (and other locales when needed). Do not hardcode UI strings.
+- **Linting**: Follow existing ESLint config (vue3-essential). Avoid `console` in production paths.

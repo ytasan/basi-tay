@@ -1,0 +1,14 @@
+---
+description: Vue 3 component patterns and naming
+globs: "**/*.vue"
+alwaysApply: false
+---
+
+# Vue Components
+
+- Use **Vue 3 Options API**: `export default { name, components, props, data, computed, methods }`.
+- **File names**: camelCase (e.g. `toDoItem.vue`, `sideBar.vue`, `listHeader.vue`).
+- **Template**: Register and use components in kebab-case (e.g. `<to-do-list>`, `<side-bar>`).
+- **Props**: Prefer explicit types: `props: { toDo: { required: true, type: Object } }`.
+- **i18n**: Use `$t('...')` for all user-visible strings. Keys live in `src/assets/languages/en.json`.
+- **Styling**: Prefer Bootstrap classes; project SCSS in `src/assets/style/` (globalVars, main, uiComponents).

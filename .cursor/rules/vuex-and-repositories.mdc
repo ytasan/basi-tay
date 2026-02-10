@@ -1,0 +1,16 @@
+---
+description: Vuex store modules and data repositories
+globs: "src/store/**/*.js, src/repositories/**/*.js"
+alwaysApply: false
+---
+
+# Vuex Store
+
+- **Module files**: `*.store.js` in `src/store/modules/`. Export object with `state`, `getters`, `mutations`, `actions`.
+- **State**: Mutate only via mutations. Keep module state minimal and normalized where possible.
+- **Actions**: Call repositories for persistence; commit mutations with payloads. Use existing `dbRepository` / `toDoListRepository` patterns.
+
+## Repositories (`src/repositories/`)
+
+- **Naming**: `*Repository.js`, default export object with methods (e.g. `update()`, `remove()`).
+- **Data access**: Centralize DB/API calls here; store modules call repositories, not the reverse.
