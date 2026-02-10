@@ -74,7 +74,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           draft: true
-          repository: manuelernestog/weektodo
+          repository: manuelernestog/basi-tay
           files: |
             dist_electron//*.exe
             dist_electron//*.dmg

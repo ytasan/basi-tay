@@ -47,7 +47,7 @@
             loadSponsors: function () {
                 if (this.sponsorsList.length == 0) {
                     const axios = require('axios').default;
-                    axios.get('https://support.weektodo.me/data/sponsors.json')
+                    axios.get('https://basi-tay.github.io/basi-tay/data/sponsors.json')
                         .then(response => (this.renderSponsors(response)))
                         .catch(error => console.log(error.message))
                 }

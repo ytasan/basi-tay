@@ -32,7 +32,7 @@
                   <div class="d-flex flex-column mt-3 h-100 ">
                     <link-list :linkList="shareList"></link-list>
                     <div class="input-group mt-2 mb-3 px-3">
-                      <input type="text" class="form-control" value="https://weektodo.me" disabled>
+                      <input type="text" class="form-control" value="https://basi-tay.github.io/basi-tay" disabled>
                       <button class="btn btn-outline-secondary" type="button" @click="copy">{{ $t("donate.copy") }}
                         <i class="bi-clipboard" style="padding-left: 5px;"></i></button>
                     </div>
@@ -65,7 +65,7 @@ export default {
       document.getElementById("homeTab").click()
     },
     async copy() {
-      await navigator.clipboard.writeText("https://weektodo.me");
+      await navigator.clipboard.writeText("https://basi-tay.github.io/basi-tay");
       var toast = new Toast(document.getElementById('copiedAddress'));
       toast.show();
     }

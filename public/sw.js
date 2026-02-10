@@ -6,7 +6,7 @@ var contentToCache = [
   "js/chunk-vendors.js",
   "/Avatar.webp",
   "/fonts/bootstrap-icons.1ed478a6.woff2",
-  "/WeekToDo-Logo-Color.svg",
+  "/basi-tay-logo-color.svg",
   "/manifest.json",
   "/fav_icons/android-chrome-192x192.png"
 ];

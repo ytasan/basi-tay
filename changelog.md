@@ -50,7 +50,7 @@ Nov 24, 2022
 - Creating new Behavior Setting Menu
 - Adding time to Copy task list action
 - Improving contrast for old items/ checked tasks
-- Raplacing name WeekToDo for WeekToDo
+- Raplacing name Basi-Tay for Basi-Tay
 - improving dark theme switchers btn
 - Adding details to recurrent events frecuency
 

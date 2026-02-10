@@ -101,8 +101,8 @@
         </div>
 
         <div v-show="!showCustomList && !showCalendar" style="margin: auto">
-          <img v-if="darkTheme" src="img/WeekToDoDarkLogo.webp" />
-          <img v-else src="img/WeekToDoLightLogo.webp" />
+          <img v-if="darkTheme" src="img/basi-tay-dark-logo.webp" />
+          <img v-else src="img/basi-tay-light-logo.webp" />
         </div>
       </div>
 
@@ -413,7 +413,7 @@ export default {
       if (!(this.$store.getters.config.notificationOnStartup && !this.$store.getters.config.firstTimeOpen)) return;
       setTimeout(
         function () {
-          new Notification("WeekToDo", {
+          new Notification("Basi-Tay", {
             body: this.initialNotificationText(),
             icon: "/favicon.ico",
             silent: true,
@@ -511,7 +511,7 @@ export default {
       if (this.isElectron() && this.$store.getters.config.checkUpdates) {
         const axios = require("axios").default;
         axios
-          .get("https://app.weektodo.me/version.json")
+          .get("https://basi-tay.github.io/basi-tay/version.json")
           .then((response) => this.showNewVersionToast(response))
           .catch((error) => console.log(error.message));
       }
@@ -535,13 +535,13 @@ export default {
     downloadNewVersion: function () {
       let isElectron = require("is-electron");
       if (isElectron()) {
-        require("electron").shell.openExternal("https://weektodo.me", "_blank");
+        require("electron").shell.openExternal("https://basi-tay.github.io/basi-tay", "_blank");
       } else {
-        window.open("https://weektodo.me", "_blank");
+        window.open("https://basi-tay.github.io/basi-tay", "_blank");
       }
     },
     seeChangeLog: function () {
-      window.open("https://weektodo.me/changelog", "_blank");
+      window.open("https://basi-tay.github.io/basi-tay/changelog", "_blank");
     },
     syncElectronConfig: function () {
       const { ipcRenderer } = require("electron");

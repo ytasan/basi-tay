@@ -4,8 +4,8 @@ module.exports = {
       nodeIntegration: true,
       customFileProtocol: './',
       builderOptions: {
-        appId: "weektodo-app.netlify.app",
-        productName: "WeekToDo",
+        appId: "basi-tay.netlify.app",
+        productName: "Basi-Tay",
         publish: ["github"],
         linux: {
           category: "Utility",

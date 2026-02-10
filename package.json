@@ -1,10 +1,10 @@
 {
-  "name": "WeekToDo",
+  "name": "basi-tay",
   "version": "2.2.0",
   "private": true,
   "description": "Free and Open Source Minimalist Weekly Planner focused on privacy.",
-  "author": "Manuel Ernesto Garcia <contact@weektodo.me> (https://weektodo.me/)",
-  "homepage": "https://weektodo.me",
+  "author": "Manuel Ernesto Garcia <contact@basi-tay.github.io> (https://basi-tay.github.io/basi-tay/)",
+  "homepage": "https://basi-tay.github.io/basi-tay",
   "keywords": [
     "ToDo",
     "Weekly Planner",
@@ -24,7 +24,7 @@
     "test": "echo success"
   },
   "main": "background.js",
-  "repository": "https://github.com/manuelernestog/weektodo",
+  "repository": "https://github.com/manuelernestog/basi-tay",
   "dependencies": {
     "@achrinza/node-ipc": "^10.1.10",
     "@manuelernestog/click-handler": "^1.4.0",

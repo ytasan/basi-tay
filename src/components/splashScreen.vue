@@ -11,21 +11,21 @@
           <img
             v-if="darkTheme"
             class="logo"
-            src="../../public/img/weektodo-isologo-white.svg"
-            alt="WeekToDo Logo"
+            src="../../public/img/basi-tay-isologo-white.svg"
+            alt="Basi-Tay Logo"
             style="display: inline"
           />
           <img
             v-else
             class="logo"
-            src="../../public/img/weektodo-isologo-color.svg"
-            alt="WeekToDo Logo"
+            src="../../public/img/basi-tay-isologo-color.svg"
+            alt="Basi-Tay Logo"
             style="display: inline"
           />
         </div>
         <div v-show="sponsor" class="d-flex justify-content-center" style="height: 50px">
           <a v-if="sponsor" :href="sponsor.url" class="d-flex sponsor-container align-items-center" target="_blank">
-            <img :src="sponsor.img" class="sponsor-img" alt="WeekToDo Sponsor" />
+            <img :src="sponsor.img" class="sponsor-img" alt="Basi-Tay Sponsor" />
             <div class="my-2 mx-2">
               <div class="fw-bolder d-inline" style="text-decoration: unset !important">{{ sponsor.name }}</div>
               <div class="opacity-50 mx-2 d-inline">{{ sponsor.message }}</div>
@@ -53,7 +53,7 @@ export default {
   mounted() {
     const axios = require("axios").default;
     axios
-      .get("https://weektodo.me/api/sponsors")
+      .get("https://basi-tay.github.io/basi-tay/api/sponsors")
       .then((response) => this.renderSponsor(response))
       .catch((error) => console.log(error.message));
   },
@@ -65,9 +65,9 @@ export default {
       var sponsors = [];
 
       sponsors.push({
-        name: "WeekToDo",
+        name: "Basi-Tay",
         message: this.$t("donate.splashMessage"),
-        url: "https://weektodo.me/support-us",
+        url: "https://basi-tay.github.io/basi-tay/support-us",
         img: "/icons/ko-fi.png",
       });
 
