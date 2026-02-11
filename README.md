@@ -28,7 +28,11 @@ Basi-Tay is a free minimalist planner app focused on privacy. Schedule your task
 - Sync across devices
 - Workspaces
 - Themes
-  
+
+## Future Plans
+
+- [The issue list on WeekToDo](https://github.com/manuelernestog/weektodo/issues) will be reviewed and filtered for relevant features and improvements.
+
 ## Installation
 
 #### Linux 
