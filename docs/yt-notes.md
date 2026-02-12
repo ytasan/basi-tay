@@ -34,9 +34,23 @@ sudo service docker start
 
 ### View running services
 
-- **Running containers only:** `docker ps`
-- **This project's compose services:** `docker compose -f docker/docker-compose.yml ps`
-- **All containers (including stopped):** `docker ps -a`
+- **Running containers only:**
+
+```bash
+docker ps
+```
+
+- **This project's compose services:**
+
+```bash
+docker compose -f docker/docker-compose.yml ps
+```
+
+- **All containers (including stopped):**
+
+```bash
+docker ps -a
+```
 
 ### Fix "container name already in use" (e.g. basi-tay)
 
