@@ -24,6 +24,17 @@
     "test": "echo success"
   },
   "main": "background.js",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "./config/eslintrc.js"
+    ]
+  },
   "repository": "https://github.com/manuelernestog/basi-tay",
   "dependencies": {
     "@achrinza/node-ipc": "^10.1.10",

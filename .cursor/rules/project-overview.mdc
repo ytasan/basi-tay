@@ -13,4 +13,4 @@ alwaysApply: true
 
 - **Comments and documentation**: Always in English.
 - **User-facing text**: Use i18n via `$t('key')`. Add keys to `src/assets/languages/en.json` (and other locales when needed). Do not hardcode UI strings.
-- **Linting**: Follow existing ESLint config (vue3-essential). Avoid `console` in production paths.
+- **Linting**: Follow existing ESLint config (vue3-essential). Config file: `config/eslintrc.js`. Avoid `console` in production paths.
