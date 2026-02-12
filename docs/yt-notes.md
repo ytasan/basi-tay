@@ -20,6 +20,12 @@ From project root:
 docker compose -f docker/docker-compose.yml up
 ```
 
+**Quicker if container already exists:** just start the existing container (no rebuild):
+
+```bash
+docker start basi-tay
+```
+
 If you use Docker Engine in WSL (without Docker Desktop), start the daemon first:
 
 ```bash
@@ -39,7 +45,7 @@ Remove existing container:
 docker rm basi-tay
 ```
 
-Or stop then remove:
+Or stop:
 ```bash
-docker stop basi-tay && docker rm basi-tay
+docker stop basi-tay 
 ```
