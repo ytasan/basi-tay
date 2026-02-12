@@ -7,22 +7,6 @@
       ref="splashScreen"
     >
       <div class="d-flex flex-column align-items-center">
-        <div class="d-flex justify-content-center align-items-center" style="margin-bottom: 2.2rem">
-          <img
-            v-if="darkTheme"
-            class="logo"
-            src="../../public/img/basi-tay-isologo-white.svg"
-            alt="Basi-Tay Logo"
-            style="display: inline"
-          />
-          <img
-            v-else
-            class="logo"
-            src="../../public/img/basi-tay-isologo-color.svg"
-            alt="Basi-Tay Logo"
-            style="display: inline"
-          />
-        </div>
         <div v-show="sponsor" class="d-flex justify-content-center" style="height: 50px">
           <a v-if="sponsor" :href="sponsor.url" class="d-flex sponsor-container align-items-center" target="_blank">
             <img :src="sponsor.img" class="sponsor-img" alt="Basi-Tay Sponsor" />
@@ -47,7 +31,6 @@ export default {
     return {
       show: true,
       sponsor: null,
-      darkTheme: this.$store.getters.config.darkTheme,
     };
   },
   mounted() {
@@ -148,11 +131,6 @@ export default {
 
 .dark-theme .splash-screen {
   background-color: #13171d;
-}
-
-.logo {
-  margin-right: 15px;
-  width: 25rem;
 }
 
 .splash-screen h1 {
