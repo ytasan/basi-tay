@@ -16,6 +16,8 @@ yarn run electron:serve // to run native version
 
 From project root:
 
+- `-f docker/docker-compose.yml` — Uses this compose file instead of the default one.
+- `up` — Creates and starts all services defined in this file (builds images if needed).
 ```bash
 docker compose -f docker/docker-compose.yml up
 ```

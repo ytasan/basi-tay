@@ -5,6 +5,11 @@
 
 Basi-Tay is a free minimalist planner app focused on privacy. Schedule your tasks and projects with to do lists and a calendar. Available for Windows, Mac, Linux or online.
 
+## Philosophy
+
+basi-tay is a program that imposes its own rules on the user. It offers a fixed, opinionated workflow. 
+a bit hard to learn, easy to use.
+
 ## Features
 
 - Cross platform
