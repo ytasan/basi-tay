@@ -10,14 +10,14 @@
           <div class="d-flex flex-column" style="text-align: center; margin-top: 10px">
             <img
               class="logo align-self-center"
-              src="/img/basi-tay-isologo-color.svg"
+              src="/img/basi-tay-logo.png"
               alt="Basi-Tay"
               title="Basi-Tay Logo"
               width="256"
             />
             <img
               class="logo logo-white align-self-center"
-              src="/img/basi-tay-isologo-white.svg"
+              src="/img/basi-tay-logo.png"
               alt="Basi-Tay"
               title="Basi-Tay Logo"
               width="256"

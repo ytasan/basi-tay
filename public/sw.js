@@ -6,9 +6,8 @@ var contentToCache = [
   "js/chunk-vendors.js",
   "/Avatar.webp",
   "/fonts/bootstrap-icons.1ed478a6.woff2",
-  "/basi-tay-logo-color.svg",
-  "/manifest.json",
-  "/fav_icons/android-chrome-192x192.png"
+  "/basi-tay-logo.png",
+  "/manifest.json"
 ];
 
 self.addEventListener("install", (e) => {

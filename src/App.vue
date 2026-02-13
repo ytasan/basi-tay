@@ -101,8 +101,8 @@
         </div>
 
         <div v-show="!showCustomList && !showCalendar" style="margin: auto">
-          <img v-if="darkTheme" src="img/basi-tay-dark-logo.webp" />
-          <img v-else src="img/basi-tay-light-logo.webp" />
+          <img v-if="darkTheme" src="img/basi-tay-logo.png" />
+          <img v-else src="img/basi-tay-logo.png" />
         </div>
       </div>
 
@@ -415,7 +415,7 @@ export default {
         function () {
           new Notification("Basi-Tay", {
             body: this.initialNotificationText(),
-            icon: "/favicon.ico",
+            icon: "/basi-tay-logo.png",
             silent: true,
           }).onclick = () => {
             this.ipcRenderer.send("show-current-window");
