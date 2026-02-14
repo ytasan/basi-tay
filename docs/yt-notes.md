@@ -1,6 +1,4 @@
-# Notes
-
-## Local setup (for dev)
+# Local setup (for dev)
 
 ```
 yarn install
@@ -8,9 +6,9 @@ yarn run serve // to run web version
 yarn run electron:serve // to run native version
 ```
 
-## Docker
+# Docker
 
-### Run development web version
+## Run development web version
 
 From project root:
 
@@ -32,7 +30,7 @@ If you use Docker Engine in WSL (without Docker Desktop), start the daemon first
 sudo service docker start
 ```
 
-### View running services
+## View running services
 
 - **Running containers only:**
 
@@ -52,7 +50,7 @@ docker compose -f docker/docker-compose.yml ps
 docker ps -a
 ```
 
-### Fix "container name already in use" (e.g. basi-tay)
+## Fix "container name already in use" (e.g. basi-tay)
 
 Remove existing container:
 ```bash
