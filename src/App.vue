@@ -620,9 +620,14 @@ export default {
     dates_array: function () {
       if (!this.selected_date) return [];
       if (this.showFourWeekView) {
-        const weekStart = this.$store.getters.config.weekStartOnMonday
+        let weekStart = this.$store.getters.config.weekStartOnMonday
           ? moment(this.selected_date).startOf("isoWeek")
           : moment(this.selected_date).startOf("week");
+        // When today is Monday or Tuesday, show previous week in the top row
+        const todayWeekday = moment().isoWeekday();
+        if (todayWeekday === 1 || todayWeekday === 2) {
+          weekStart = moment(weekStart).subtract(1, "week");
+        }
         const dates_array = [];
         for (let i = 0; i < 28; i++) {
           dates_array.push(moment(weekStart).add(i, "d").format("YYYYMMDD"));

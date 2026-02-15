@@ -54,6 +54,10 @@ You can type slash commands in a task title to change the task's date or color. 
 
 Inline commands work both when editing the title in the list view and in the task detail modal.
 
+## Calendar
+
+In the **4-week calendar view**, when the current day is **Monday or Tuesday**, the top row of the grid shows the **previous week** (one week earlier). The following rows show the current week and the next two weeks. This makes it easier to see the week that just ended at the start of the week.
+
 ## Roadmap
 
 - Touch mode

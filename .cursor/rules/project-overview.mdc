@@ -14,3 +14,7 @@ alwaysApply: true
 - **Comments and documentation**: Always in English.
 - **User-facing text**: Use i18n via `$t('key')`. Add keys to `src/assets/languages/en.json` (and other locales when needed). Do not hardcode UI strings.
 - **Linting**: Follow existing ESLint config (vue3-essential). Config file: `config/eslintrc.js`. Avoid `console` in production paths.
+
+## Calendar behavior
+
+- **4-week view**: When the current day is Monday or Tuesday, the top row of the calendar grid must show the **previous week** (week start shifted back by 1 week). Logic: in `App.vue` computed `dates_array` (four-week branch), if `moment().isoWeekday()` is 1 or 2, subtract one week from `weekStart` before building the 28-day range.
