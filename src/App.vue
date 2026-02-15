@@ -17,18 +17,31 @@
             'full-screen-divider': hideBottomListContainer,
           }"
         >
-          <i class="bi-chevron-left slider-btn" ref="weekLeft" @click="weekMoveLeft"></i>
-          <div class="todo-slider weekdays" ref="weekListContainer">
+          <template v-if="!showFourWeekView">
+            <i class="bi-chevron-left slider-btn" ref="weekLeft" @click="weekMoveLeft"></i>
+            <div class="todo-slider weekdays" ref="weekListContainer">
+              <to-do-list
+                v-for="date in dates_array"
+                :key="date"
+                :id="date"
+                :showCustomList="showCustomList"
+                @todo-list-mounted="todoListMounted"
+              >
+              </to-do-list>
+            </div>
+            <i class="bi-chevron-right slider-btn" ref="weekRight" @click="weekMoveRight"></i>
+          </template>
+          <div v-else class="four-week-grid">
             <to-do-list
               v-for="date in dates_array"
               :key="date"
               :id="date"
               :showCustomList="showCustomList"
+              :gridCell="true"
               @todo-list-mounted="todoListMounted"
             >
             </to-do-list>
           </div>
-          <i class="bi-chevron-right slider-btn" ref="weekRight" @click="weekMoveRight"></i>
         </div>
 
         <div
@@ -229,7 +242,9 @@ export default {
 
     this.$store.dispatch("loadAllRepeatingEvent").then(
       function () {
-        let totalDaysCount = parseInt(this.$store.getters.config.columns) + 2;
+        let totalDaysCount = this.$store.getters.config.showFourWeekView
+          ? 28
+          : parseInt(this.$store.getters.config.columns) + 2;
         let totalCustomListCount = this.$store.getters.cTodoListIds.length;
         this.initialListToLoad = totalDaysCount + totalCustomListCount;
         this.deleteOldRepeatingEvents();
@@ -242,7 +257,9 @@ export default {
     );
   },
   mounted() {
-    this.$refs.weekListContainer.scrollLeft = this.todoListWidth();
+    if (this.$refs.weekListContainer) {
+      this.$refs.weekListContainer.scrollLeft = this.todoListWidth();
+    }
     this.calendarHeight = this.$store.getters.config.calendarHeight;
     window.addEventListener("resize", this.weekResetScroll);
     document.onreadystatechange = () => {
@@ -296,7 +313,9 @@ export default {
       }
     },
     weekResetScroll: function () {
-      this.$refs.weekListContainer.scrollLeft = this.todoListWidth();
+      if (this.$refs.weekListContainer) {
+        this.$refs.weekListContainer.scrollLeft = this.todoListWidth();
+      }
     },
     customMoveRight: function () {
       this.$refs.customListContainer.scrollLeft =
@@ -311,6 +330,7 @@ export default {
       });
     },
     todoListWidth: function () {
+      if (!this.$refs.weekListContainer) return 0;
       return this.$refs.weekListContainer.clientWidth / this.columns;
     },
     customTodoListWidth: function () {
@@ -552,8 +572,22 @@ export default {
     },
   },
   computed: {
+    showFourWeekView: function () {
+      return this.$store.getters.config.showFourWeekView;
+    },
     dates_array: function () {
       if (!this.selected_date) return [];
+      if (this.showFourWeekView) {
+        const weekStart = this.$store.getters.config.weekStartOnMonday
+          ? moment(this.selected_date).startOf("isoWeek")
+          : moment(this.selected_date).startOf("week");
+        const dates_array = [];
+        for (let i = 0; i < 28; i++) {
+          dates_array.push(moment(weekStart).add(i, "d").format("YYYYMMDD"));
+        }
+        this.$store.commit("updateSelectedDates", dates_array);
+        return dates_array;
+      }
       var dates_array = [moment(this.selected_date).subtract(1, "d").format("YYYYMMDD"), this.selected_date];
 
       for (let i = 1; i < this.columns; i++) {
@@ -683,6 +717,21 @@ body {
   min-height: -webkit-fill-available;
   min-height: -moz-available;
   height: fit-content;
+}
+
+.four-week-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0;
+  overflow: hidden;
+}
+
+.four-week-grid .to-do-list-container {
+  min-height: 0;
+  overflow: auto;
 }
 
 @-moz-document url-prefix() {

@@ -206,6 +206,13 @@
                     @change="changeConfig('compactView', configData.compactView)" />
                 </div>
                 <div class="form-check form-switch d-flex px-1 mb-3 justify-content-between">
+                  <label class="form-check-label" for="fourWeekViewSetting">{{
+                    $t("settings.fourWeekView")
+                  }}</label>
+                  <input class="form-check-input" type="checkbox" id="fourWeekViewSetting" v-model="configData.showFourWeekView"
+                    @change="changeConfig('showFourWeekView', configData.showFourWeekView)" />
+                </div>
+                <div class="form-check form-switch d-flex px-1 mb-3 justify-content-between">
                   <label class="form-check-label" for="fullscreenToDoModal">{{
                     $t("settings.fullscreenToDoModal")
                   }}</label>
@@ -359,7 +366,7 @@ export default {
         this.$store.commit("updateConfig", { val: val, key: key });
         configRepository.update(this.$store.getters.config);
         if (key === "language") this.$i18n.locale = this.configData.language;
-        if (key === "columns") {
+        if (key === "columns" || key === "showFourWeekView") {
           setTimeout(
             function () {
               this.$emit("changeColumns");

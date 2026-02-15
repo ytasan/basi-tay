@@ -1,7 +1,7 @@
 <template>
   <div :id="'list' + id" class="to-do-list-container d-flex flex-column" ref="listContainer" :class="{
     'old-date': !customTodoList && moments(id).isBefore(Date(), 'day'),
-  }" :style="`flex: 0 0 ${100 / columns}%;`">
+  }" :style="gridCell ? 'width: 100%; height: 100%; min-height: 0; overflow: auto;' : `flex: 0 0 ${100 / columns}%;`">
     <div v-if="loading" class="loading-spinner">
       <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -48,6 +48,7 @@ export default {
     customTodoList: { required: false, default: false, type: Boolean },
     cTodoListIndex: { required: false, type: Number },
     showCustomList: { required: false, type: Boolean },
+    gridCell: { required: false, default: false, type: Boolean },
   },
   data() {
     return {
