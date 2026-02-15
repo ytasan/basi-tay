@@ -24,7 +24,7 @@
     <div v-if="activeTodo.toDo.subTaskList && activeTodo.toDo.subTaskList.length > 0" class="todo-item-sub-tasks">
       <ul class="sub-tasks">
         <li v-for="(subTask, index) in activeTodo.toDo.subTaskList" :key="index" class="sub-task">
-          <div class="d-flex flex-row mt-1" :class="{ 'checked-sub-task': subTask.checked }">
+          <div class="d-flex flex-row" :class="{ 'checked-sub-task': subTask.checked, 'mt-1': index > 0 }">
             <input class="form-check-input" type="checkbox" v-model="subTask.checked"
               @change="checkSubTask(subTask, index, $event)" />
             <label class="form-check-label" @click="checkSubTask(subTask, index, $event)">
@@ -335,7 +335,8 @@ export default {
 
 .sub-tasks {
   list-style: none;
-  padding: 0px;
+  padding: 0;
+  margin: 0;
   font-size: 0.865rem;
 
   li {
