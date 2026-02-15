@@ -45,12 +45,12 @@ You can type slash commands in a task title to change the task's date or color. 
 
 | Command | Meaning |
 |---------|--------|
-| `/green` | Default (green) |
+| `/green` | Default todo (green) |
 | `/gray`, `/cancel`, `/cancelled` | Cancelled (gray) |
 | `/red` | Needs to be done that day (red) |
 | `/blue`, `/ok`, `/done` | Done (blue); also marks the task as completed (checked, title strikethrough) |
 
-**Example:** For a task titled "dokumanlar gozden gecirilecek", add ` /tod` to the title. When you finish editing, the task moves to today, its color becomes green, and the title is left as "dokumanlar gozden gecirilecek".
+**Example:** For a task titled "review the documents", add ` /tod` to the title. When you finish editing, the task moves to today, its color becomes green, and the title is left as "review the documents".
 
 Inline commands work both when editing the title in the list view and in the task detail modal.
 

@@ -90,8 +90,9 @@ export function processInlineCommands(inputText) {
   const result = { text };
   if (color !== undefined) result.color = color;
   if (listId !== null) result.listId = listId;
-  // Done color (blue) means completed: same as checkTodo / checked = true / strikethrough
+  // Done color (blue) = completed; any other color command = unchecked
   if (color === COLOR_MAP.blue) result.checked = true;
+  else if (color !== undefined) result.checked = false;
   return result;
 }
 

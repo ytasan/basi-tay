@@ -264,7 +264,7 @@ export default {
       const result = inlineCommands.processInlineCommands(this.todo.text);
       this.todo.text = result.text;
       if (result.color !== undefined) this.todo.color = result.color;
-      if (result.checked) this.todo.checked = true;
+      if (result.checked !== undefined) this.todo.checked = result.checked;
       if (result.listId && result.listId !== this.todo.listId) {
         this.moveToTodoList(result.listId);
       }
