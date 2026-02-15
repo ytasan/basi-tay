@@ -8,7 +8,13 @@
       </div>
     </div>
 
-    <list-header :id="id" :customTodoList="customTodoList" :cTodoListIndex="cTodoListIndex" :toDoList="toDoListState">
+    <list-header
+      :id="id"
+      :customTodoList="customTodoList"
+      :cTodoListIndex="cTodoListIndex"
+      :toDoList="toDoListState"
+      :showWeekdayInHeader="showWeekdayInHeader"
+    >
     </list-header>
     <ul class="to-do-list">
       <li v-for="(toDo, index) in toDoListState" :key="index">
@@ -49,6 +55,7 @@ export default {
     cTodoListIndex: { required: false, type: Number },
     showCustomList: { required: false, type: Boolean },
     gridCell: { required: false, default: false, type: Boolean },
+    showWeekdayInHeader: { required: false, default: true, type: Boolean },
   },
   data() {
     return {

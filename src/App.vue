@@ -19,28 +19,58 @@
         >
           <template v-if="!showFourWeekView">
             <i class="bi-chevron-left slider-btn" ref="weekLeft" @click="weekMoveLeft"></i>
-            <div class="todo-slider weekdays" ref="weekListContainer">
+            <div
+              class="calendar-week-scroll"
+              ref="weekListContainer"
+              :style="{ '--week-cols': columns, '--week-days': dates_array.length }"
+            >
+              <div class="calendar-week-content">
+                <div class="weekday-header-row">
+                  <div
+                    v-for="date in dates_array"
+                    :key="'wh-' + date"
+                    class="weekday-header-cell"
+                  >
+                    {{ getWeekdayLabel(date) }}
+                  </div>
+                </div>
+                <div class="todo-slider weekdays">
+                  <to-do-list
+                    v-for="date in dates_array"
+                    :key="date"
+                    :id="date"
+                    :showCustomList="showCustomList"
+                    :showWeekdayInHeader="false"
+                    @todo-list-mounted="todoListMounted"
+                  >
+                  </to-do-list>
+                </div>
+              </div>
+            </div>
+            <i class="bi-chevron-right slider-btn" ref="weekRight" @click="weekMoveRight"></i>
+          </template>
+          <div v-else class="four-week-grid-wrapper">
+            <div class="four-week-weekday-row">
+              <div
+                v-for="day in weekdayNamesForFourWeek"
+                :key="day"
+                class="four-week-weekday-cell"
+              >
+                {{ day }}
+              </div>
+            </div>
+            <div class="four-week-grid">
               <to-do-list
                 v-for="date in dates_array"
                 :key="date"
                 :id="date"
                 :showCustomList="showCustomList"
+                :gridCell="true"
+                :showWeekdayInHeader="false"
                 @todo-list-mounted="todoListMounted"
               >
               </to-do-list>
             </div>
-            <i class="bi-chevron-right slider-btn" ref="weekRight" @click="weekMoveRight"></i>
-          </template>
-          <div v-else class="four-week-grid">
-            <to-do-list
-              v-for="date in dates_array"
-              :key="date"
-              :id="date"
-              :showCustomList="showCustomList"
-              :gridCell="true"
-              @todo-list-mounted="todoListMounted"
-            >
-            </to-do-list>
           </div>
         </div>
 
@@ -336,6 +366,9 @@ export default {
     customTodoListWidth: function () {
       return this.$refs.customListContainer.clientWidth / this.customColumns;
     },
+    getWeekdayLabel: function (date) {
+      return moment(date).locale(this.$store.getters.config.language).format("ddd");
+    },
     setSelectedDate: function (date) {
       this.selected_date = date;
       this.$nextTick(function () {
@@ -575,6 +608,15 @@ export default {
     showFourWeekView: function () {
       return this.$store.getters.config.showFourWeekView;
     },
+    weekdayNamesForFourWeek: function () {
+      const weekStart = this.$store.getters.config.weekStartOnMonday ? 1 : 0;
+      const days = [];
+      for (let i = 0; i < 7; i++) {
+        const d = moment().day(weekStart + i);
+        days.push(d.locale(this.$store.getters.config.language).format("ddd"));
+      }
+      return days;
+    },
     dates_array: function () {
       if (!this.selected_date) return [];
       if (this.showFourWeekView) {
@@ -717,6 +759,73 @@ body {
   min-height: -webkit-fill-available;
   min-height: -moz-available;
   height: fit-content;
+}
+
+.calendar-week-scroll {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-week-content {
+  display: flex;
+  flex-direction: column;
+  min-height: min-content;
+  width: calc(100% * (var(--week-days) / var(--week-cols)));
+}
+
+.calendar-week-content .weekday-header-row {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.calendar-week-content .weekday-header-cell {
+  flex: 0 0 calc(100% / var(--week-cols));
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 4px 0;
+  color: grey;
+  text-transform: capitalize;
+  min-width: 0;
+}
+
+.calendar-week-content .todo-slider.weekdays {
+  flex: 1;
+  min-height: 0;
+}
+
+.dark-theme .weekday-header-cell {
+  color: #8b949e;
+}
+
+.four-week-grid-wrapper {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.four-week-weekday-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 4px 0;
+  color: grey;
+  text-transform: capitalize;
+}
+
+.dark-theme .four-week-weekday-row {
+  color: #8b949e;
+}
+
+.four-week-weekday-cell {
+  min-width: 0;
 }
 
 .four-week-grid {

@@ -4,10 +4,13 @@
       style="visibility: hidden"></i>
     <div style="flex-grow: 1" class="noselect">
       <div v-if="!customTodoList">
-        <h4 :class="{ 'today-date': is_today }">
+        <h4 v-if="showWeekdayInHeader" :class="{ 'today-date': is_today }">
           {{ moments(id).locale(language).format("dddd") }}
         </h4>
-        <span class="weekly-to-do-subheader">
+        <h4 v-else :class="{ 'today-date': is_today }">
+          {{ moments(id).locale(language).format("LL") }}
+        </h4>
+        <span v-if="showWeekdayInHeader" class="weekly-to-do-subheader">
           {{ moments(id).locale(language).format("LL") }}
         </span>
       </div>
@@ -79,6 +82,7 @@ export default {
     customTodoList: { required: false, default: false, type: Boolean },
     cTodoListIndex: { required: false, type: Number },
     toDoList: { required: false, type: Array },
+    showWeekdayInHeader: { required: false, default: true, type: Boolean },
   },
   data() {
     return {
