@@ -37,6 +37,9 @@ const mutations = {
   updateTodo(state, obj) {
     state.todoLists[obj.toDoListId][obj.index].repeatingEvent = null;
     state.todoLists[obj.toDoListId][obj.index].text = obj.text;
+    if (obj.color !== undefined) {
+      state.todoLists[obj.toDoListId][obj.index].color = obj.color;
+    }
   },
   removeTodo(state, obj) {
     state.todoLists[obj.toDoListId].splice(obj.index, 1);

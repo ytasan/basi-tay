@@ -168,7 +168,8 @@ import comfirmModal from "../../components/comfirmModal.vue";
 import linkifyStr from 'linkify-string';
 import ClickHandler from "@manuelernestog/click-handler";
 import tasksHelper from "../../helpers/tasksHelper";
-import descriptionTextArea from './descriptionTextArea.vue'
+import descriptionTextArea from './descriptionTextArea.vue';
+import inlineCommands from "../../helpers/inlineCommands";
 
 export default {
   name: "toDoModal",
@@ -260,6 +261,12 @@ export default {
     },
     doneEditTitle: function () {
       this.editingTitle = false;
+      const result = inlineCommands.processInlineCommands(this.todo.text);
+      this.todo.text = result.text;
+      if (result.color !== undefined) this.todo.color = result.color;
+      if (result.listId && result.listId !== this.todo.listId) {
+        this.moveToTodoList(result.listId);
+      }
       this.updateTodo();
     },
     startDrag: function (event, index) {

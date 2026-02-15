@@ -34,6 +34,7 @@
 import toDoListRepository from "../repositories/toDoListRepository";
 import moment from "moment";
 import linkifyStr from 'linkify-string';
+import inlineCommands from "../helpers/inlineCommands";
 
 export default {
   components: {},
@@ -62,12 +63,33 @@ export default {
     },
     doneEdit: function () {
       this.editing = false;
-      this.$store.commit("updateTodo", {
-        toDoListId: this.toDoListId,
-        index: this.index,
-        text: this.text,
-      });
-      toDoListRepository.update(this.toDoListId, this.$store.getters.todoLists[this.toDoListId]);
+      const result = inlineCommands.processInlineCommands(this.text);
+      const targetListId = result.listId && moment(result.listId, "YYYYMMDD", true).isValid() ? result.listId : null;
+
+      if (targetListId && targetListId !== this.toDoListId) {
+        const toDo = this.toDo;
+        const fromListId = this.toDoListId;
+        const fromIndex = this.index;
+        this.$store.dispatch("loadTodoLists", targetListId).then(() => {
+          this.$store.commit("removeTodo", { toDoListId: fromListId, index: fromIndex });
+          toDo.listId = targetListId;
+          toDo.text = result.text;
+          toDo.repeatingEvent = null;
+          if (result.color !== undefined) toDo.color = result.color;
+          this.$store.commit("addTodo", toDo);
+          toDoListRepository.update(fromListId, this.$store.getters.todoLists[fromListId]);
+          toDoListRepository.update(targetListId, this.$store.getters.todoLists[targetListId]);
+        });
+      } else {
+        const payload = {
+          toDoListId: this.toDoListId,
+          index: this.index,
+          text: result.text,
+        };
+        if (result.color !== undefined) payload.color = result.color;
+        this.$store.commit("updateTodo", payload);
+        toDoListRepository.update(this.toDoListId, this.$store.getters.todoLists[this.toDoListId]);
+      }
     },
     cancelEdit: function () {
       this.text = this.toDo.text;

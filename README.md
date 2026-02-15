@@ -25,6 +25,34 @@ a bit hard to learn, easy to use.
 - Task Time
 - Recurring Tasks
 - Notifications and reminders
+- Inline commands (slash commands in task titles to set date and color)
+
+## Inline Commands
+
+You can type slash commands in a task title to change the task's date or color. The command text is removed from the title when you finish editing (Enter or blur).
+
+**Date commands** (move the task to that day; the command is removed from the title):
+
+| Command | Meaning |
+|---------|--------|
+| `/tod` | Today — sets the task date to today and color to green |
+| `/yes` | Yesterday |
+| `/tom` | Tomorrow |
+| `/tom+1` | Day after tomorrow (2 days from today) |
+| `/yes-1` | Two days ago |
+
+**Color commands** (set the task color only):
+
+| Command | Meaning |
+|---------|--------|
+| `/green` | Default (green) |
+| `/gray`, `/cancel`, `/cancelled` | Cancelled (gray) |
+| `/red` | Needs to be done that day (red) |
+| `/blue`, `/ok`, `/done` | Done (blue) |
+
+**Example:** For a task titled "dokumanlar gozden gecirilecek", add ` /tod` to the title. When you finish editing, the task moves to today, its color becomes green, and the title is left as "dokumanlar gozden gecirilecek".
+
+Inline commands work both when editing the title in the list view and in the task detail modal.
 
 ## Roadmap
 
