@@ -76,6 +76,7 @@ export default {
           toDo.text = result.text;
           toDo.repeatingEvent = null;
           if (result.color !== undefined) toDo.color = result.color;
+          if (result.checked) toDo.checked = true;
           this.$store.commit("addTodo", toDo);
           toDoListRepository.update(fromListId, this.$store.getters.todoLists[fromListId]);
           toDoListRepository.update(targetListId, this.$store.getters.todoLists[targetListId]);
@@ -87,6 +88,7 @@ export default {
           text: result.text,
         };
         if (result.color !== undefined) payload.color = result.color;
+        if (result.checked) payload.checked = true;
         this.$store.commit("updateTodo", payload);
         toDoListRepository.update(this.toDoListId, this.$store.getters.todoLists[this.toDoListId]);
       }

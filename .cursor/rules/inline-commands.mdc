@@ -1,0 +1,27 @@
+---
+description: Inline commands behavior and done-state consistency
+globs: src/helpers/inlineCommands.js, src/components/toDoItem.vue, src/views/toDoModal/toDoModal.vue, src/store/modules/todolist.store.js
+---
+
+# Inline Commands and Done State
+
+## Semantic equivalence
+
+In this app, **done** is represented consistently by:
+
+- **Blue color** (e.g. `/blue`, `/ok`, `/done` inline commands)
+- **Checked state** (`todo.checked === true`), same as when the user clicks the circle (see `checkTodo` in `todolist.store.js`)
+- **Strikethrough** on the task title (UI applies this when `checked` is true)
+
+So: done color, checked item, and strikethrough mean the same thing.
+
+## Implementation rule
+
+When an inline command sets the task to the **done** color (blue), the task must also be marked as **completed**:
+
+- Set `todo.checked = true` (same behavior as `checkTodo` and `checkAllItems` in `todolist.store.js`).
+- The store mutation `updateTodo` accepts optional `checked`; use it when applying the result of `processInlineCommands` if `result.checked === true`.
+- In list view (`toDoItem.vue`): pass `result.checked` in the update payload, and when moving a task with done color set `toDo.checked = true`.
+- In modal (`toDoModal.vue`): set `this.todo.checked = true` when `result.checked` is true before calling `updateTodo()`.
+
+This keeps inline commands aligned with the rest of the app (checkbox, move-to-bottom for completed, etc.).

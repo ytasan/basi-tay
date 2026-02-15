@@ -61,7 +61,7 @@ function getColorForCommand(cmd) {
  * Strips all /command tokens from the title and returns updated text plus any color/listId.
  *
  * @param {string} inputText - Raw task title (may contain /tod, /green, etc.)
- * @returns {{ text: string, color?: string, listId?: string }}
+ * @returns {{ text: string, color?: string, listId?: string, checked?: boolean }}
  */
 export function processInlineCommands(inputText) {
   if (typeof inputText !== "string") {
@@ -90,6 +90,8 @@ export function processInlineCommands(inputText) {
   const result = { text };
   if (color !== undefined) result.color = color;
   if (listId !== null) result.listId = listId;
+  // Done color (blue) means completed: same as checkTodo / checked = true / strikethrough
+  if (color === COLOR_MAP.blue) result.checked = true;
   return result;
 }
 

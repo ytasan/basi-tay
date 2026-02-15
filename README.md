@@ -48,7 +48,7 @@ You can type slash commands in a task title to change the task's date or color. 
 | `/green` | Default (green) |
 | `/gray`, `/cancel`, `/cancelled` | Cancelled (gray) |
 | `/red` | Needs to be done that day (red) |
-| `/blue`, `/ok`, `/done` | Done (blue) |
+| `/blue`, `/ok`, `/done` | Done (blue); also marks the task as completed (checked, title strikethrough) |
 
 **Example:** For a task titled "dokumanlar gozden gecirilecek", add ` /tod` to the title. When you finish editing, the task moves to today, its color becomes green, and the title is left as "dokumanlar gozden gecirilecek".
 

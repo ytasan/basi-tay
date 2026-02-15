@@ -40,6 +40,9 @@ const mutations = {
     if (obj.color !== undefined) {
       state.todoLists[obj.toDoListId][obj.index].color = obj.color;
     }
+    if (obj.checked !== undefined) {
+      state.todoLists[obj.toDoListId][obj.index].checked = obj.checked;
+    }
   },
   removeTodo(state, obj) {
     state.todoLists[obj.toDoListId].splice(obj.index, 1);
