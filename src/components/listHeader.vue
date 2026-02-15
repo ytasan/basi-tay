@@ -207,15 +207,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
+/* Sticky so the date header stays visible when the task list is scrolled (e.g. 4-week view) */
 .weekly-to-do-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: rgb(250, 249, 249);
   text-align: center;
   margin-bottom: 23px;
   margin-top: 10px;
   display: flex;
   font-size: 0.8rem;
-  display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.dark-theme .weekly-to-do-header {
+  background-color: #0c0d14;
 }
 
 .today-date {
