@@ -18,7 +18,7 @@
         </span>
       </span>
       <i class="bi-three-dots todo-item-menu" type="button" @click="showToDoDetails"></i>
-      <i class="bi-x todo-item-remove" @click="removeTodo"></i>
+      <i class="bi-trash todo-item-remove" @click="removeTodo"></i>
     </div>
 
     <div v-if="activeTodo.toDo.subTaskList && activeTodo.toDo.subTaskList.length > 0" class="todo-item-sub-tasks">
@@ -281,7 +281,7 @@ export default {
 }
 
 .todo-item-remove {
-  font-size: 1.3rem;
+  font-size: 1rem;
   cursor: pointer;
   margin-top: 1px;
   margin-left: 5px;
