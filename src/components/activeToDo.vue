@@ -82,7 +82,11 @@ export default {
     },
     onItemTextClick: function (e) {
       if (e.target.href) return;
-      this.showToDoDetails();
+      this.clickhandler.handle(
+        () => { this.activeTodo.edit(); },
+        () => { this.showToDoDetails(); },
+        `item-text-${this.activeTodo.toDoListId}-${this.activeTodo.index}`
+      );
     },
     checkTodoClickhandler: function (e) {
       if (e.target.href) return;
