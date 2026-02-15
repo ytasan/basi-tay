@@ -7,8 +7,8 @@
         <h4 v-if="showWeekdayInHeader" :class="{ 'today-date': is_today }">
           {{ moments(id).locale(language).format("dddd") }}
         </h4>
-        <h4 v-else :class="{ 'today-date': is_today }">
-          {{ moments(id).locale(language).format("LL") }}
+        <h4 v-else class="date-only-header" :class="{ 'today-date': is_today }">
+          {{ moments(id).locale(language).format("MMM D, YYYY") }}
         </h4>
         <span v-if="showWeekdayInHeader" class="weekly-to-do-subheader">
           {{ moments(id).locale(language).format("LL") }}
@@ -227,6 +227,20 @@ export default {
   font-size: 21px;
   text-transform: capitalize;
   min-height: 25px;
+}
+
+/* Date-only header (calendar view): same font as weekday row in App.vue */
+.weekly-to-do-header h4.date-only-header {
+  font-size: 0.8rem;
+  color: grey;
+  text-align: center;
+  padding: 4px 0;
+  margin-bottom: 4px;
+  min-height: unset;
+}
+
+.dark-theme .weekly-to-do-header h4.date-only-header {
+  color: #8b949e;
 }
 
 .weekly-to-do-subheader {

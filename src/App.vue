@@ -367,7 +367,7 @@ export default {
       return this.$refs.customListContainer.clientWidth / this.customColumns;
     },
     getWeekdayLabel: function (date) {
-      return moment(date).locale(this.$store.getters.config.language).format("ddd");
+      return moment(date).locale(this.$store.getters.config.language).format("dddd");
     },
     setSelectedDate: function (date) {
       this.selected_date = date;
@@ -613,7 +613,7 @@ export default {
       const days = [];
       for (let i = 0; i < 7; i++) {
         const d = moment().day(weekStart + i);
-        days.push(d.locale(this.$store.getters.config.language).format("ddd"));
+        days.push(d.locale(this.$store.getters.config.language).format("dddd"));
       }
       return days;
     },
@@ -782,23 +782,22 @@ body {
   flex-shrink: 0;
 }
 
+/* Weekday row: same font as listHeader h4 */
 .calendar-week-content .weekday-header-cell {
   flex: 0 0 calc(100% / var(--week-cols));
   text-align: center;
-  font-size: 0.8rem;
-  padding: 4px 0;
-  color: grey;
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  min-height: 25px;
   text-transform: capitalize;
   min-width: 0;
+  padding: 4px 0;
 }
 
 .calendar-week-content .todo-slider.weekdays {
   flex: 1;
   min-height: 0;
-}
-
-.dark-theme .weekday-header-cell {
-  color: #8b949e;
 }
 
 .four-week-grid-wrapper {
@@ -809,19 +808,18 @@ body {
   overflow: hidden;
 }
 
+/* Weekday row (4-week): same font as listHeader h4 */
 .four-week-weekday-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   flex-shrink: 0;
   text-align: center;
-  font-size: 0.8rem;
-  padding: 4px 0;
-  color: grey;
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  min-height: 25px;
   text-transform: capitalize;
-}
-
-.dark-theme .four-week-weekday-row {
-  color: #8b949e;
+  padding: 4px 0;
 }
 
 .four-week-weekday-cell {
