@@ -94,12 +94,12 @@
             <input class="form-check-input" type="checkbox" value="" id="todo-header" v-model="todo.checked"
               @change="checkTodoClickhandler(false)" />
             <div class="title-container">
-              <label v-show="!editingTitle" class="form-check-label todo-title" for="todo-header"
-                :class="{ 'completed-task': todo.checked }" @dblclick="editTitle">
+              <label v-show="!editingTitle" class="form-check-label todo-title"
+                :class="{ 'completed-task': todo.checked }" @click="editTitle" @dblclick="editTitle">
                 <span v-html="todoText"></span>
               </label>
               <label v-show="!editingTitle && todo.text == ''" class="form-check-label todo-title todo-title-empty-title"
-                for="todo-header" @dblclick="editTitle">
+                @click="editTitle" @dblclick="editTitle">
                 {{ $t("todoDetails.taskTitle") }}
               </label>
               <input v-show="editingTitle" class="todo-title-input" type="text" v-model="todo.text" ref="titleInput"

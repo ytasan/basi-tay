@@ -4,13 +4,13 @@
     :class="{ 'dragging': todoDragging }" @mouseleave="hideToDoItem">
     <div class="d-flex">
       <span class="noselect item-text" :class="{ 'checked-todo': activeTodo.toDo.checked }" style="flex-grow: 1"
-        @click="checkTodoClickhandler" @click.middle="showToDoDetails">
+        @click="onItemTextClick" @click.middle="showToDoDetails">
         <span v-if="activeTodo.toDo.color != 'none'" class="cicle-icon" :style="'color: ' + activeTodo.toDo.color" :class="{
           'bi-check-circle-fill': activeTodo.toDo.checked,
           'bi-circle-fill': !activeTodo.toDo.checked,
-        }"></span>
+        }" @click.stop="checkTodoClickhandler"></span>
         <span v-else class="cicle-icon"
-          :class="{ 'bi-check-circle': activeTodo.toDo.checked, 'bi-circle': !activeTodo.toDo.checked, }"></span>
+          :class="{ 'bi-check-circle': activeTodo.toDo.checked, 'bi-circle': !activeTodo.toDo.checked, }" @click.stop="checkTodoClickhandler"></span>
         <span v-html="todoText"></span>
         <span class="time-details"> {{ timeFormat(activeTodo.toDo.time) }}
           <div class="alarm-indicator"
@@ -79,6 +79,10 @@ export default {
 
       let modal = new Modal(document.getElementById("toDoModal"), { keyboard: false });
       modal.show();
+    },
+    onItemTextClick: function (e) {
+      if (e.target.href) return;
+      this.showToDoDetails();
     },
     checkTodoClickhandler: function (e) {
       if (e.target.href) return;
