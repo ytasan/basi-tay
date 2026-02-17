@@ -312,11 +312,11 @@ export default {
   color: #3c3c3c;
 
   .dropdown-item {
-    padding: .4rem 1.9rem .4rem .65rem;
+    padding: .2rem 1.9rem .2rem .65rem;
   }
 
   .dropdown-divider {
-    margin: .3rem;
+    margin: .15rem .3rem;
   }
 
   i {
